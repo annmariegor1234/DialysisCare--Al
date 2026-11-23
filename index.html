@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DialysisCare AI Assistant</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/kidney-icon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- =========================================================
+       APP SHELL — all content is injected here by js/app.js
+       No patient data. No medical advice. UI structure only.
+       NOTE: script is plain (no type="module") so the app
+       opens directly from the file system via double-click.
+  ========================================================== -->
+  <div id="app">
+
+    <!-- TOP HEADER -->
+    <header id="site-header">
+      <!-- Row 1: brand + meta -->
+      <div class="header-inner">
+        <div class="brand">
+          <img src="assets/kidney-icon.svg" alt="DialysisCare logo" class="brand-icon" />
+          <div class="brand-text">
+            <span class="brand-name">DialysisCare</span>
+            <span class="brand-tagline">AI-Assisted Patient Education</span>
+          </div>
+        </div>
+        <div class="header-meta">
+          <span class="safety-badge">
+            <span class="safety-dot"></span>
+            Medical Safety Review Active
+          </span>
+          <button id="btn-disclaimer" class="btn-outline" aria-label="View disclaimer">
+            ⚕ Disclaimer
+          </button>
+          <!-- Hamburger — visible only on mobile -->
+          <button id="btn-mobile-nav" aria-label="Toggle navigation" aria-expanded="false" aria-controls="header-nav">
+            ☰
+          </button>
+        </div>
+      </div>
+      <!-- Row 2: navigation tabs -->
+      <nav id="header-nav" aria-label="Main navigation">
+        <ul class="header-nav-list" role="list">
+          <li>
+            <button class="nav-item active" data-view="home" aria-current="page">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-label">Home</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="hemodialysis">
+              <span class="nav-icon">💉</span>
+              <span class="nav-label">Hemodialysis</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="peritoneal">
+              <span class="nav-icon">🫁</span>
+              <span class="nav-label">Peritoneal Dialysis</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="nutrition">
+              <span class="nav-icon">🥗</span>
+              <span class="nav-label">Nutrition &amp; Meals</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="library">
+              <span class="nav-icon">📚</span>
+              <span class="nav-label">Education Library</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="safety">
+              <span class="nav-icon">🛡️</span>
+              <span class="nav-label">Safety Review</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="assistant">
+              <span class="nav-icon">💬</span>
+              <span class="nav-label">AI Assistant</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="labResults">
+              <span class="nav-icon">🔬</span>
+              <span class="nav-label">Lab Results</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-view="schedule">
+              <span class="nav-icon">📅</span>
+              <span class="nav-label">Schedule</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- DISCLAIMER MODAL (hidden by default) -->
+    <div id="modal-disclaimer" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-disclaimer-title">
+      <div class="modal-box">
+        <h2 id="modal-disclaimer-title">Important Disclaimer</h2>
+        <p>
+          DialysisCare AI Assistant is an <strong>educational tool only</strong>. It does not provide
+          medical diagnoses, prescribe medications, or replace the advice of your healthcare team.
+        </p>
+        <ul>
+          <li>All content is for general educational purposes.</li>
+          <li>No real patient information is collected or stored.</li>
+          <li>High-risk medical questions are flagged and held for review by a <strong>qualified healthcare professional</strong> before any response is shown.</li>
+          <li>Always consult your nephrologist, dialysis nurse, or registered dietitian for personalised advice.</li>
+        </ul>
+        <p class="modal-highlight">
+          🚨 If you are experiencing a medical emergency, call emergency services immediately.
+        </p>
+        <button class="btn-primary" id="btn-close-disclaimer">I Understand</button>
+      </div>
+    </div>
+
+    <!-- LAYOUT WRAPPER -->
+    <div class="layout">
+
+      <!-- MAIN CONTENT AREA — views injected here -->
+      <main id="main-content" aria-live="polite" aria-label="Main content">
+        <!-- Rendered by js/app.js -->
+      </main>
+
+    </div><!-- /.layout -->
+
+  </div><!-- /#app -->
+
+  <!-- Load order matters: safetyGuard → knowledgeBase → nutritionGuide → mealPlanner → labResults → schedule → app -->
+  <script src="js/safetyGuard.js"></script>
+  <script src="js/knowledgeBase.js"></script>
+  <script src="js/nutritionGuide.js"></script>
+  <script src="js/mealPlanner.js"></script>
+  <script src="js/labResults.js"></script>
+  <script src="js/schedule.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
